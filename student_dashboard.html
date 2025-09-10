@@ -1,0 +1,109 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Student Dashboard</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="brand">
+        <img src="assets/college-1.jpg" alt="logo" />
+        <h1>Student Dashboard</h1>
+      </div>
+      <nav class="nav">
+        <a href="home.html">Home</a>
+        <a href="signin.html">Sign out</a>
+      </nav>
+    </header>
+
+    <section class="grid-2 card">
+      <div>
+        <h3 style="margin-top:0">Current leave (most recent)</h3>
+
+        <!-- example of most recent leave -->
+        <div class="leave-status" style="margin-bottom:12px">
+          <div>
+            <strong>Leave: Family function</strong>
+            <div class="kv">Dates: 2025-09-10 → 2025-09-12</div>
+            <div class="kv">Type: <span class="badge emergency">Emergency</span></div>
+          </div>
+          <div style="text-align:right">
+            <div class="kv">Status</div>
+            <div class="badge pending" style="margin-top:8px">Pending</div>
+          </div>
+        </div>
+
+        <h4 style="margin-bottom:8px">Apply for a leave</h4>
+        <form id="leaveForm" class="card" onsubmit="submitLeave(event)">
+          <label class="kv">Leave reason</label>
+          <input id="reason" type="text" required placeholder="Reason for leave" />
+
+          <div class="form-row" style="margin-top:8px">
+            <div style="flex:1">
+              <label class="kv">From</label>
+              <input id="from" type="date" required />
+            </div>
+            <div style="flex:1">
+              <label class="kv">To</label>
+              <input id="to" type="date" required />
+            </div>
+          </div>
+
+          <div style="margin-top:8px">
+            <label class="kv">Leave type</label>
+            <select id="leaveType">
+              <option value="normal">Normal</option>
+              <option value="emergency">Emergency (fast track)</option>
+            </select>
+          </div>
+
+          <div style="margin-top:8px">
+            <label class="kv">Transport ticket (upload)</label>
+            <input id="ticket" type="file" accept="image/*,application/pdf" />
+            <div class="kv" style="font-size:12px">Attach boarding pass / ticket if leaving campus by train/bus/flight</div>
+          </div>
+
+          <div style="margin-top:12px" class="row">
+            <button class="btn btn-primary" type="submit">Submit leave request</button>
+            <a class="btn btn-outline" href="student_history.html">View history</a>
+          </div>
+        </form>
+      </div>
+
+      <aside>
+        <div class="card">
+          <h4 style="margin-top:0">Quick stats</h4>
+          <div class="kv">Approved this semester: <strong>3</strong></div>
+          <div class="kv">Pending: <strong>1</strong></div>
+          <div class="kv">Emergency requests: <strong>0</strong></div>
+        </div>
+
+        <div class="card" style="margin-top:12px">
+          <h4 style="margin-top:0">Next steps</h4>
+          <ol style="padding-left:18px;color:var(--muted)">
+            <li>Await parent approval (normal requests)</li>
+            <li>Advisor review after parent approval</li>
+            <li>Warden final decision & QR e-pass on approval</li>
+          </ol>
+        </div>
+      </aside>
+    </section>
+  </div>
+
+  <script>
+    function submitLeave(e){
+      e.preventDefault();
+      // demo behavior: show summary modal (alert here)
+      const reason = document.getElementById('reason').value;
+      const from = document.getElementById('from').value;
+      const to = document.getElementById('to').value;
+      const type = document.getElementById('leaveType').value;
+      alert(`Leave submitted\n${reason}\n${from} → ${to}\nType: ${type}\n(Transport ticket attached if selected)`);
+      // In a real app: send to backend, attach file, trigger notifications (parent/advisor/warden)
+    }
+  </script>
+</body>
+</html>

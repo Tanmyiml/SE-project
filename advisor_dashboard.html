@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Advisor Dashboard</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="brand">
+        <img src="assets/college-1.jpg" alt="logo" />
+        <h1>Advisor Dashboard</h1>
+      </div>
+      <nav class="nav">
+        <a href="home.html">Home</a>
+        <a href="signin.html">Sign out</a>
+      </nav>
+    </header>
+
+    <main class="card">
+      <h3 style="margin-top:0">Pending requests (awaiting your review)</h3>
+
+      <table class="table">
+        <thead>
+          <tr><th>Student</th><th>Dates</th><th>Type</th><th>Parent status</th><th>Action</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>R. Sharma</td>
+            <td>2025-09-10 → 2025-09-12</td>
+            <td>Emergency</td>
+            <td>Approved</td>
+            <td>
+              <button class="btn btn-primary" onclick="decide('accept','R. Sharma')">Accept</button>
+              <button class="btn btn-outline" onclick="decide('reject','R. Sharma')">Reject</button>
+            </td>
+          </tr>
+          <tr>
+            <td>A. Kumar</td>
+            <td>2025-09-20 → 2025-09-22</td>
+            <td>Normal</td>
+            <td>Pending</td>
+            <td>
+              <button class="btn btn-primary" onclick="decide('accept','A. Kumar')">Accept</button>
+              <button class="btn btn-outline" onclick="decide('reject','A. Kumar')">Reject</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div style="margin-top:14px" class="card">
+        <h4 style="margin-top:0">Notifications</h4>
+        <div class="kv">Emergency request: R. Sharma — check now.</div>
+      </div>
+
+      <div style="margin-top:14px" class="card">
+        <h4 style="margin-top:0">History & monthly summary</h4>
+        <div class="kv">Total leaves this month: <strong>23</strong></div>
+        <div class="kv">Normal: 18 | Emergency: 5</div>
+        <a class="btn btn-outline" href="advisor_history.html" style="margin-top:8px;display:inline-block">View full history</a>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    function decide(action, student){
+      if(action==='accept') alert('Accepted leave for ' + student);
+      else alert('Rejected leave for ' + student);
+      // In a real app: call API to update status and notify student/warden
+    }
+  </script>
+</body>
+</html>

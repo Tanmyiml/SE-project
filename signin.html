@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Sign In - Leave System</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="brand">
+        <img src="assets/college-1.jpg" alt="logo" />
+        <h1>Sign In</h1>
+      </div>
+      <nav class="nav">
+        <a href="home.html">Home</a>
+        <a href="signup.html">Sign Up</a>
+      </nav>
+    </header>
+
+    <main class="card" style="max-width:720px;margin:auto">
+      <h3>Sign in to your account</h3>
+      <form id="signinForm" onsubmit="handleSignIn(event)">
+        <div style="margin-top:8px">
+          <label class="kv">Email</label>
+          <input id="email" type="email" required />
+        </div>
+        <div style="margin-top:8px">
+          <label class="kv">Password</label>
+          <input id="password" type="password" required />
+        </div>
+        <div style="margin-top:8px">
+          <label class="kv">Role</label>
+          <select id="role" required>
+            <option value="">Select role</option>
+            <option value="student">Student</option>
+            <option value="parent">Parent</option>
+            <option value="advisor">Advisor</option>
+            <option value="warden">Warden</option>
+            <option value="admin">Admin</option>
+          </select>
+        </div>
+
+        <div style="margin-top:14px" class="row">
+          <button class="btn btn-primary" type="submit">Sign in</button>
+          <a class="btn btn-outline" href="signup.html">Create account</a>
+        </div>
+      </form>
+    </main>
+  </div>
+
+  <script>
+    function handleSignIn(e){
+      e.preventDefault();
+      const role = document.getElementById('role').value;
+      // Simple role-based redirect for static demo:
+      if(role === 'student') location.href = 'student_dashboard.html';
+      else if(role === 'advisor') location.href = 'advisor_dashboard.html';
+      else if(role === 'parent') location.href = 'parent_dashboard.html';
+      else if(role === 'warden') location.href = 'warden_dashboard.html';
+      else if(role === 'admin') location.href = 'admin_dashboard.html';
+      else alert('Select a role');
+    }
+  </script>
+</body>
+</html>
